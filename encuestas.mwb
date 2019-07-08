@@ -1,0 +1,38 @@
+CREATE TABLE IF NOT EXISTS `encuestas`.`cuestionario` (
+  `id_cuestionario` INT(11) NOT NULL AUTO_INCREMENT,
+  `nombre_cuestionario` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_cuestionario`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 4
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `encuestas`.`preguntas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `encuestas`.`preguntas` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 5
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `encuestas`.`respuesta`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `encuestas`.`respuesta` (
+  `idrespuesta` INT(11) NOT NULL AUTO_INCREMENT,
+  `desresp` VARCHAR(100) NULL DEFAULT NULL,
+  `idPregunta` INT(11) NOT NULL,
+  PRIMARY KEY (`idrespuesta`),
+  INDEX `idPregunta_idx` (`idPregunta` ASC),
+  CONSTRAINT `idPregunta`
+    FOREIGN KEY (`idPregunta`)
+    REFERENCES `encuestas`.`preguntas` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+AUTO_INCREMENT = 6
+DEFAULT CHARACTER SET = utf8;
