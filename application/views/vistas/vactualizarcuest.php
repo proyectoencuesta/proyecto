@@ -11,7 +11,7 @@
      <div class="form-group">
         <br><br>
         <label for="exampleInputEmail1">Cambiar nombre Cuestionario</label>
-        <input type="Text" class="form-control" name = "cuesti" value="<?php echo $row->nombre_cuestionario; ?>"aria-describedby="emailHelp" placeholder="actualizar nombre cuestionario">
+        <input type="Text" class="form-control" name = "cuesti" value="<?php echo $row->nombre_cuestionario; ?>"aria-describedby="emailHelp" placeholder="actualizar nombre cuestionario" required>
      </div>
      <button type="submit" class="btn btn-primary" value="Agregar">Actualizar</button>
      <button type="submit" class="btn btn-outline-danger" value="Cancelar">Cancelar</button>

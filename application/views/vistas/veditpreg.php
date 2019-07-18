@@ -9,7 +9,7 @@
 		<br>
 
           <div class="form-group">
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="descripcion" placeholder="Redacta tu pregunta...."></textarea>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="descripcion" placeholder="Redacta tu pregunta...." required></textarea>
   </div>
 
   <button type="submit" class="btn btn-primary" value="Agregar">Agregar</button><br><br>

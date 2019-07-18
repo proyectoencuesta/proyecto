@@ -5,15 +5,22 @@
 
 <div id= "acuest">
     <a   class="btn btn-outline-info" href="<?php echo site_url('Controller1/nuevoCuest');?>">
-    <img src="<?php echo base_url('assets/img/agregar.jpg');?> ">Agregar Cuestionario</a></div>
+    <img src="<?php echo base_url('assets/img/agregar.jpg');?> ">Agregar Cuestionario</a>
+</div>
+<div id="accuest">
+    <a   class="btn btn-outline-info" href="<?php echo site_url('Controller1/modificarCuest') ?>"><img src="<?php echo base_url('assets/img/lista1.jpg')?>"> Acción Cuestionario</a>
+</div>
+<br><br>
+<center>
+
+<br>
 
 
-    <div id="accuest">
-      <a   class="btn btn-outline-info" href="<?php echo site_url('Controller1/modificarCuest') ?>"><img src="<?php echo base_url('assets/img/lista1.jpg')?>"> Acción Cuestionario</a>
-      </div><br><br>
-      <center><br>
+<a href="<?php echo site_url('Controller1/index');?>" style="color:#08088A"><strong><u>Volver atrás</u></strong></a>
 
-<div  id= "enlace"> <a href="<?php echo site_url('Controller1/index');?>" style="color:#154360"><strong><u>Volver al inicio</u></strong></a></center></div>        
+<center>
+
+<br>
         
 </body>
 </html>

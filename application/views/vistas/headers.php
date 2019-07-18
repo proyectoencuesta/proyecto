@@ -28,3 +28,4 @@
 #enlace{float: right; margin-right:450px; margin-top: 400px;}
 </style>
 <body >
+<?php echo validation_errors(); ?>

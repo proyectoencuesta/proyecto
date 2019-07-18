@@ -4,9 +4,11 @@
           </nav> 
            <br><br>
             <!--enlace que te regresa a la pagina de principal-->
-           <a href="<?php echo site_url('Controller1/cuestionario');?>" style="color:#08088A"><strong><u>Volver al inicio</u></strong></a>
+           <a href="<?php echo site_url('Controller1/cuestionario');?>" style="color:#08088A"><strong><u>Volver atrás</u></strong></a>
+           <br>
+           <a href="<?php echo site_url('Controller1/index');?>" style="color:#08088A"><strong><u>Inicio</u></strong></a>
+           
            <br><br>
-
            <table class="table">
            <thead class="thead-dark">
              <tr>
@@ -25,6 +27,7 @@
                <a class="btn btn-outline-danger" href= "<?php echo site_url('Controller1/deleteCuest'); ?>/<?php echo $row->id_cuestionario;?>"role="button">Eliminar</a>
                <a class="btn btn-outline-danger" href= "<?php echo site_url('Controller1/pregcuest'); ?>/<?php echo $row->id_cuestionario;?>"role="button">Agregar Preguntas</a>
                <?php } ?>
+               <?=validation_errors();?><!--mostrar los errores de validación-->
             </tbody>
            </table>
 

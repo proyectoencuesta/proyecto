@@ -17,8 +17,8 @@
     <img src="<?php echo base_url('assets/img/resp.jpg');?> ">Respuestas</a></div>
 
     <div id="img4">
-    <a   class="btn btn-outline-info" href="<?php echo site_url('Controller1/preguntas');?>">
-    <img src="<?php echo base_url('assets/img/resp.jpg');?> ">Preguntas</a></div>
+    <a   class="btn btn-outline-info" href="<?php echo site_url('Controller1/usuarios');?>">
+    <img src="<?php echo base_url('assets/img/resp.jpg');?> ">Usuarios</a></div>
 
 
 
