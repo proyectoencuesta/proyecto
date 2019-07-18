@@ -8,6 +8,8 @@ class Controller1 extends CI_Controller {
 			parent::__construct();
 			//se carga el modelo
 		  $this->load->model('Model_1');
+		  $this->load->helper(array('form', 'url'));
+		  $this->load->library('form_validation');
 			
 		}//finaliza el constructor
 
@@ -27,11 +29,33 @@ function altpreg(){
 	$this->load->view('vistas/agrepregunta');
 }
 
-function altapregunta(){
-$this->Model_1->crearPregunta();
-	  // redireccionamos a controlador1
-      redirect("Controller1/altpreg");
-}
+    function altapregunta(){
+
+
+			
+			// redireccionamos a controlador1
+			
+
+		$this->form_validation->set_rules( 'descripcion','pregunta','required');
+
+		if ($this->form_validation->run() == FALSE){
+				//$datos["mensaje"]="Validación incorrecta";
+				//$this->load->view("vistas/valtcuest",$datos);
+			$this->form_validation->set_message('required','El campo %s es obligatorio');
+					//$this->load->view('vistas/vcuest');
+		}else{
+				//$data['msg'] = 'success';
+				$this->Model_1->crearPregunta();
+					
+					//$this->Model_1->crearCuestionario();
+					//$this->load->view('vistas/valtcuest');	
+					
+			}
+			redirect("Controller1/altpreg");
+			
+
+	
+    }
 
 function listapreg(){
 	$data['result'] = $this->Model_1->obtenerDatos();
@@ -43,13 +67,26 @@ function listapreg(){
 	function editarpreg($id){
 		$data['row'] = $this->Model_1->getDato($id);
 		 $this->load->view('vistas/headers');
-     $this->load->view("vistas/veditpreg",$data);
+	 $this->load->view("vistas/veditpreg",$data);
+	 
 
 	}//termina la funcion editar
 
 	function actualizar($id){
-      $data['row'] = $this->Model_1->actpreg($id);
-      redirect("Controller1/listapreg");
+	 
+	 
+	  $this->form_validation->set_rules( 'descripcion' , 'Obligatorio' , 'required');
+
+	  if ($this->form_validation->run() == FALSE){
+		
+		 //$this->load->view('vistas/vcuest');
+	  }else{
+		 //$data['msg'] = 'success';
+		 $data['row'] = $this->Model_1->actpreg($id);
+		 
+		 //$this->load->view('vistas/valtcuest');	
+	  }
+	  redirect("Controller1/listapreg");
 	}//termina la funcion de actualizar
 
 function eliminar($id){
@@ -72,8 +109,20 @@ function altresp(){
 }//fin metodo altresp
 
 function agregarRespuesta(){
-	$this->Model_1->crearRespuesta();
-	redirect("Controller1/respuestas");
+	
+	
+	$this->form_validation->set_rules( 'descripcion' , 'Obligatorio' , 'required');
+
+	  if ($this->form_validation->run() == FALSE){
+		
+		 //$this->load->view('vistas/vcuest');
+	  }else{
+		 //$data['msg'] = 'success';
+		 $this->Model_1->crearRespuesta();
+		 
+		 //$this->load->view('vistas/valtcuest');	
+	  }
+      redirect("Controller1/respuestas");
 }//fin metodo agregar respuesta
 
 
@@ -93,8 +142,25 @@ $this->load->view('vistas/vaccresp');
 }//fin del metodo que muestra el formulario de cuestionario
 
 function agregarCuestionario(){
-$this->Model_1->crearCuestionario();
-redirect('Controller1/nuevoCuest');
+
+    $this->form_validation->set_rules( 'nombre_cuestionario' , 'Obligatorio' , 'required');
+
+	if ($this->form_validation->run() == FALSE){
+		$datos["mensaje"]="Validación incorrecta";
+		$this->load->view("vistas/valtcuest",$datos);
+		$this->form_validation->set_message('required','El campo %s es obligatorio');
+			//$this->load->view('vistas/vcuest');
+	}
+	else{
+			//$data['msg'] = 'success';
+			
+			
+			$this->Model_1->crearCuestionario();
+			$datos["mensaje"]="Validación correcta";
+			$this->load->view('vistas/valtcuest',$datos);	
+			
+	}
+    redirect('Controller1/nuevoCuest');
 }//termina funcion agregar cuestionario
 
 
@@ -105,7 +171,24 @@ redirect('Controller1/nuevoCuest');
 	}//
 	
 	function modifyCuest($id){
-		$data['row'] = $this->Model_1->actuCuest($id);
+		
+		
+		$this->form_validation->set_rules( 'cuesti' , 'Obligatorio' , 'required');
+
+		if ($this->form_validation->run() == FALSE){
+			 
+			$this->form_validation->set_message('required','El campo %s es obligatorio');
+
+				//$this->load->view('vistas/vcuest');
+		}
+		else{
+				//$data['msg'] = 'success';
+				
+				$data['row'] = $this->Model_1->actuCuest($id);
+				//$this->Model_1->crearCuestionario();
+				//$this->load->view('vistas/valtcuest');	
+				
+		}
 		redirect("Controller1/modificarCuest");
 	}//termina la funcion de que act
 
@@ -126,7 +209,7 @@ redirect('Controller1/nuevoCuest');
 		redirect("Controller1/borrarCuest");
 	}//termina la funcion que elimina la pregunta
      
-    function pregcuest(){
+    function pregcuest($id){
     	$data['result']=$this->Model_1->obtenerDatos();
         $this->load->view('vistas/headers');
     	$this->load->view('vistas/vpregalcuest',$data);
